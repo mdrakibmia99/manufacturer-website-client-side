@@ -9,8 +9,8 @@ const Login = () => {
     const onSubmit = data => console.log(data.email, data.password);
 
     return (
-        <div className="">
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="min-h-screen flex justify-center items-center">
+            <form onSubmit={handleSubmit(onSubmit)} className="border-2 shadow-lg p-5 rounded-lg">
                 <div className='text-center'>
                     {/* segment for email */}
                     <div className="form-control w-full max-w-xs mx-auto">

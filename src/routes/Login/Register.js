@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 
 const Register = () => {
     const [user, loading] = useAuthState(auth);
-    const [createUserWithEmailAndPassword,user1,loading1] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
+    const [createUserWithEmailAndPassword,user1,loading1,error] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
     const [updateProfile, updating] = useUpdateProfile(auth);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const imageStorageKey = 'a80e92850d333103388e807b03f46a26';
@@ -20,54 +20,61 @@ const Register = () => {
     if(user || user1){
       navigate('/home')
     }
-    const onSubmit = data => {
-        const image = data.image[0];
-        const formData = new FormData();
-        formData.append('image', image);
-
-        // stroe in imgbb db
-        const urlImg = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-        const postAvatar = async () => {
-            const request = await fetch(urlImg, {
-                method: "POST",
-                body: formData
-            });
-            const response = await request.json();
-            if (response?.success) {
-                const name = data?.name;
-                const email = data?.email;
-                const password=data?.password;
-                const avatar = response?.data?.url;
-
-                const user = {
-                    name: name,
-                    email: email,
-                    avatar: avatar
-                };
-
-                // store in our db
-                const urlUsr = `http://localhost:5000/user`;
-                const postUser = async () => {
-                    const request = await fetch(urlUsr, {
-                        method: "POST",
-                        headers: {
-                            'content-type': 'application/json',
-                        },
-                        body: JSON.stringify(user)
-                    });
-                    const response = await request.json();
-                    if (response.insertedId) {
-                        toast.success(`register for ${name} done!`);
-                        await createUserWithEmailAndPassword(email,password);
-                        await updateProfile({displayName:avatar})
-
-                        
-                    }
-                };
-                 postUser();
-            }
-        };
-         postAvatar();
+   
+    
+    const onSubmit =  async(data) => {
+        const name = data?.name;
+        const email = data?.email;
+        const password=data?.password;
+       
+        const myvalue=await createUserWithEmailAndPassword(email,password);
+        console.log("my value",myvalue,user1,loading1,error);
+          if(user1){
+            const image = data.image[0];
+            const formData = new FormData();
+            formData.append('image', image);
+    
+            // stroe in imgbb db
+            const urlImg = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+            const postAvatar = async () => {
+                const request = await fetch(urlImg, {
+                    method: "POST",
+                    body: formData
+                });
+                const response = await request.json();
+                if (response?.success) {
+                    const avatar = response?.data?.url;
+    
+                    const user = {
+                        name: name,
+                        email: email,
+                        avatar: avatar
+                    };
+    
+                    // store in our db
+                    const urlUsr = `http://localhost:5000/user`;
+                    const postUser = async () => {
+                        const request = await fetch(urlUsr, {
+                            method: "POST",
+                            headers: {
+                                'content-type': 'application/json',
+                            },
+                            body: JSON.stringify(user)
+                        });
+                        const response = await request.json();
+                        console.log(response)
+                        if (response.insertedId) {
+                            toast.success(`register for ${name} done!`);
+                            await updateProfile({displayName:name,photoURL:avatar})
+    
+                            
+                        }
+                    };
+                     postUser();
+                }
+            };
+             postAvatar();
+          }
     };
     return (
         <div className="">
@@ -154,7 +161,7 @@ const Register = () => {
                     {/* segment for avatar */}
                     <div className="form-control w-full max-w-xs mx-auto">
                         <label className="label">
-                            <span className="label-text">Avatar</span>
+                            <span className="label-text">Profile picture</span>
                         </label>
                         <input
                             type="file"
@@ -170,7 +177,8 @@ const Register = () => {
                             {errors.image?.type === 'required' && <span className="label-text-alt text-red-500">{errors.image.message}</span>}
                         </label>
                     </div>
-
+                    {loading1 && <Loading></Loading>}
+                      {error? <p className='text-[red]'>{error.message}</p>:""}
                     <input className='btn w-full max-w-xs text-white hover:bg-white hover:text-black' type="submit" value="Register" />
                 </div>
             </form>
