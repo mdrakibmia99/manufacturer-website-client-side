@@ -1,10 +1,12 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../shared/Loading';
 import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import SocialLogin from './SocialLogin';
+
 
 
 const Register = () => {
@@ -12,14 +14,16 @@ const Register = () => {
     const [createUserWithEmailAndPassword,user1,loading1,error] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
     const [updateProfile, updating] = useUpdateProfile(auth);
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const imageStorageKey = 'a80e92850d333103388e807b03f46a26';
     const navigate=useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     if(loading || loading1 || updating){
         return <Loading></Loading>
     }
     if(user || user1){
-      navigate('/home')
+        navigate(from, { replace: true });
     }
+  
    
     
     const onSubmit =  async(data) => {
@@ -27,59 +31,20 @@ const Register = () => {
         const email = data?.email;
         const password=data?.password;
        
-        const myvalue=await createUserWithEmailAndPassword(email,password);
-        console.log("my value",myvalue,user1,loading1,error);
-          if(user1){
-            const image = data.image[0];
-            const formData = new FormData();
-            formData.append('image', image);
-    
-            // stroe in imgbb db
-            const urlImg = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-            const postAvatar = async () => {
-                const request = await fetch(urlImg, {
-                    method: "POST",
-                    body: formData
-                });
-                const response = await request.json();
-                if (response?.success) {
-                    const avatar = response?.data?.url;
-    
-                    const user = {
-                        name: name,
-                        email: email,
-                        avatar: avatar
-                    };
-    
-                    // store in our db
-                    const urlUsr = `http://localhost:5000/user`;
-                    const postUser = async () => {
-                        const request = await fetch(urlUsr, {
-                            method: "POST",
-                            headers: {
-                                'content-type': 'application/json',
-                            },
-                            body: JSON.stringify(user)
-                        });
-                        const response = await request.json();
-                        console.log(response)
-                        if (response.insertedId) {
-                            toast.success(`register for ${name} done!`);
-                            await updateProfile({displayName:name,photoURL:avatar})
-    
-                            
-                        }
-                    };
-                     postUser();
-                }
-            };
-             postAvatar();
-          }
+       await createUserWithEmailAndPassword(email,password);
+       await updateProfile({displayName:name});
+       toast.success('Registration successful');
+   
+         
+           
+        
     };
     return (
-        <div className="">
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="min-h-screen flex justify-center items-center">
+            <div className='w-full'>
+            <form className="p-5 rounded-lg lg:w-1/4 w-full shadow-lg border-2 mx-auto" onSubmit={handleSubmit(onSubmit)}>
                 <div className='text-center'>
+                    <h3 className='text-center text-2xl text-green-500'>Register!</h3>
                     {/* segment for name */}
                     <div className="form-control w-full max-w-xs mx-auto">
                         <label className="label">
@@ -157,31 +122,16 @@ const Register = () => {
                             {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                         </label>
                     </div>
-
-                    {/* segment for avatar */}
-                    <div className="form-control w-full max-w-xs mx-auto">
-                        <label className="label">
-                            <span className="label-text">Profile picture</span>
-                        </label>
-                        <input
-                            type="file"
-                            className="w-full max-w-xs border-r border rounded py-2 px-3"
-                            {...register("image", {
-                                required: {
-                                    value: true,
-                                    message: 'Image is Required'
-                                }
-                            })}
-                        />
-                        <label className="label">
-                            {errors.image?.type === 'required' && <span className="label-text-alt text-red-500">{errors.image.message}</span>}
-                        </label>
-                    </div>
                     {loading1 && <Loading></Loading>}
                       {error? <p className='text-[red]'>{error.message}</p>:""}
+                      <p className='py-3'>Already have an account?<Link to="/login" className='hover:text-black text-green-400'>Login</Link></p>
                     <input className='btn w-full max-w-xs text-white hover:bg-white hover:text-black' type="submit" value="Register" />
                 </div>
             </form>
+            <div className='lg:w-1/4 w-full mx-auto'>
+             <SocialLogin></SocialLogin>
+            </div>
+            </div>
         </div>
     );
 };

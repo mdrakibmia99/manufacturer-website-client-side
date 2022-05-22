@@ -5,15 +5,17 @@ import { Link } from 'react-router-dom';
 import CustomLink from '../components/CustomLink';
 import auth from '../firebase.init';
 
+
 const Navbar = () => {
-    const [user] = useAuthState(auth);
+    const [user,] = useAuthState(auth);
     const [navbarOpen, setNavbarOpen] = useState(false);
     const handleSignOut = () => {
         signOut(auth);
     }
+    
     return (
-        <div className='shadow-sm sticky top-0 z-10'>
-            <nav className="relative flex flex-wrap items-center justify-between px-2  py-2 bg-gray-500 mb-3">
+        <div className='shadow-sm sticky top-0 z-10 '>
+            <nav className="relative flex flex-wrap items-center justify-between px-2  py-2 bg-gray-500">
                 <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                         <Link  to={'/home'} >
@@ -69,12 +71,12 @@ const Navbar = () => {
 
 
 
-                            {(user?.photoURL) ?
+                            {(user) ?
                                 <li className="nav-item flex items-center mb-0">
                                     <p className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75 mb-0'>
                                         {`${(user?.displayName) ? user.displayName : ""}`}
                                     </p>
-                                    <img src={user.photoURL} alt="dp" className='rounded-full w-8 h-8 mr-2' />
+                                    {user?.photoURL && <img src={user.photoURL} alt="dp" className='rounded-full w-8 h-8 mr-2' />}
                                 </li>
                                 :
                                 ""
