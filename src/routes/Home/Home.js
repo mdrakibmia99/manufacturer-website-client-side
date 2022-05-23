@@ -11,18 +11,18 @@ const Home = () => {
     return (
         <div>
             <div className='container mx-auto'>
-                <div class="carousel w-full overflow-hidden">
+                <div className="carousel w-full overflow-hidden">
                     {
                         carousels.map((carousel,index) => <div
                            
                             id={`slide${index+1}`}
-                            class="carousel-item relative w-full"
+                            className="carousel-item relative w-full"
                             key={carousel._id}
                         >
-                            <img src={carousel.sliderImage} class="w-full h-screen" alt='' />
-                            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                                <a href={`${nextSliderPoint[index]}`} class="btn btn-circle">❮</a>
-                                <a href={`${previousSliderPoint[index]}`} class="btn btn-circle">❯</a>
+                            <img src={carousel.sliderImage} className="w-full h-screen" alt='' />
+                            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                                <a href={`${nextSliderPoint[index]}`} className="btn btn-circle">❮</a>
+                                <a href={`${previousSliderPoint[index]}`} className="btn btn-circle">❯</a>
                             </div>
                         </div>
                         )}

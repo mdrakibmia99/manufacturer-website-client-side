@@ -14,54 +14,58 @@ const Purchase = () => {
         axios.get(`http://localhost:5000/product/${id}`)
             .then(res => setProduct(res?.data[0]))
     }, [id]);
-    
+
     const { _id, toolAvailableQuantity, toolDescription, toolImage, toolName, toolOrderQuantity, toolPrice } = product;
- 
+
     const handlePurchaseOrder = (event) => {
         event.preventDefault();
-        let orderCountValue=parseInt(event.target.number.value);
-        if(orderCountValue<toolOrderQuantity){
+        let orderCountValue = parseInt(event.target.number.value);
+        if (orderCountValue < toolOrderQuantity) {
             toast.error(`Your minimum order can be ${toolOrderQuantity}`);
-        }else if(orderCountValue>toolAvailableQuantity){
+        } else if (orderCountValue > toolAvailableQuantity) {
             toast.error(`Exceed the availability.Please order ${toolOrderQuantity} to ${toolAvailableQuantity}`);
-        }else{
-            const email=user.email;
-            const name=user.displayName;
-          const totalPrice=orderCountValue*toolPrice;
-          const orderData={
-              name:name,
-              email:email,
-              totalPrice:totalPrice,
-              singlePrice:toolPrice,
-              toolAvailableQuantity,
-              toolDescription,
-              toolImage,
-              toolName
-          }
-        
-            axios.post(`http://localhost:5000/userOrder`,orderData)
-                .then(response =>{
-                       const {data}=response;
-                       if(data.insertedId){
+        } else {
+            const email = user.email;
+            const name = user.displayName;
+            const totalPrice = orderCountValue * toolPrice;
+            const orderData = {
+                name: name,
+                email: email,
+                totalProducts:orderCountValue,
+                totalPrice: totalPrice,
+                singlePrice: toolPrice,
+                toolAvailableQuantity,
+                toolDescription,
+                toolImage,
+                toolName
+            }
+
+            axios.post(`http://localhost:5000/userOrder`, orderData)
+                .then(response => {
+                    const { data } = response;
+                    if (data.insertedId) {
                         console.log(response);
                         toast.success("Your Order confirm.Please check in Dashboard")
-                       }
-                   
+                    }
+
                 })
         }
         event.target.reset();
 
 
-         
+
     }
-    
+
+
+
+
     return (
         <div>
-            <div className="antialiased h-screen grid grid-cols-1 justify-center items-center bg-gray-200 text-gray-900 font-sans p-6">
+            <div className="antialiased  grid grid-cols-1 justify-center items-center bg-gray-200 text-gray-900 font-sans p-6">
                 <div className="container mx-auto">
-                    <div className="flex flex-wrap justify-center -mx-4">
-                        <div className="w-full xl:w-3/4 p-4">
-                        <h1 className='flex items-baseline justify-center my-5'><i className="fa fa-hashtag text-5xl" aria-hidden="true"></i><span className='text-4xl'>Order tool</span></h1>
+                    <div className="flex flex-wrap justify-center mx-4">
+                        <div className="w-full xl:w-2/3 p-4">
+                            <h1 className='flex items-baseline justify-center my-5'><i className="fa fa-hashtag text-5xl" aria-hidden="true"></i><span className='text-4xl'>Order tool</span></h1>
                             <div className="c-card  bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden lg:flex md:flex sm:block">
                                 <div className="relative lg:w-1/2 md:w-1/2 pb-48 overflow-hidden">
                                     <img className="absolute inset-0 h-full w-full object-fill" src={toolImage} alt="" />
@@ -75,7 +79,7 @@ const Purchase = () => {
                                     <p> <span className={`text-black text-2xl`} >Minimum Order can be </span><span className='text-2xl text-secondary font-bold'>{toolOrderQuantity}</span></p>
                                 </div>
                             </div>
-                            <form onSubmit={handlePurchaseOrder} className='w-full lg:w-1/2 mx-auto text-center'>
+                            <form onSubmit={handlePurchaseOrder} className='w-full lg:w-1/2 mx-auto text-center lg:pt-3'>
                                 <input type="number" name='number' className="
                                 my-2
                           block
@@ -92,11 +96,11 @@ const Purchase = () => {
                           ease-in-out
                           m-0
                           focus:text-gray-700 focus:bg-white border-blue-600 focus:outline-none"
-                          required
+                                    required
                                     placeholder={`Enter Product Quantity ${toolOrderQuantity} to ${toolAvailableQuantity}`}
                                 />
                                 <input
-                                    className="w-full lg:w-44 mx-au text-emerald-500 border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-2 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block mt-4"
+                                    className="w-full  text-center text-emerald-500 border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-2 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block mt-4"
                                     type="submit"
                                     value={'Order'}
                                 />
@@ -106,6 +110,8 @@ const Purchase = () => {
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     )

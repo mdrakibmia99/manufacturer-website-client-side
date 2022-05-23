@@ -7,7 +7,7 @@ import auth from '../../firebase.init';
 const Dashboard = () => {
     const [user] = useAuthState(auth);
     return (
-        <div className="drawer drawer-mobile -z-0">
+        <div className="drawer drawer-mobile z-0">
             <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content mt-4 ">
                 {/* <!-- Page content here --> */}
@@ -16,14 +16,14 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                <ul className="menu p-4 overflow-y-auto w-80  text-base-content bg-gray-500">
+                <ul className="menu p-4 overflow-y-auto w-80 bg-white">
                     {/* <!-- Sidebar content here --> */}
-                    <li><CustomLink to="/dashboard" className="p-3">My Orders</CustomLink></li>
-                    <li><CustomLink to="/dashboard/addingReview" className="p-3">Adding Review</CustomLink></li>
-                    <li><CustomLink to="/dashboard/addProduct" className="p-3">Adding Product</CustomLink></li>
-                    <li><CustomLink to="/dashboard/makeAdmin" className="p-3">Make Admin</CustomLink></li>
-                    <li><CustomLink to="/dashboard/manageOrders" className="p-3">Manage Orders</CustomLink></li>
-                    <li><CustomLink to="/dashboard/manageProducts" className="p-3">Manage Products</CustomLink></li>
+                    <li className='bg-black'><CustomLink to="/dashboard" className="p-3">My Orders</CustomLink></li>
+                    <li className='bg-black'><CustomLink to="/dashboard/addingReview" className="p-3">Adding Review</CustomLink></li>
+                    <li className='bg-black'><CustomLink to="/dashboard/addProduct" className="p-3">Adding Product</CustomLink></li>
+                    <li className='bg-black'><CustomLink to="/dashboard/makeAdmin" className="p-3">Make Admin</CustomLink></li>
+                    <li className='bg-black'><CustomLink to="/dashboard/manageOrders" className="p-3">Manage Orders</CustomLink></li>
+                    <li className='bg-black'><CustomLink to="/dashboard/manageProducts" className="p-3">Manage Products</CustomLink></li>
                 </ul>
             </div>
         </div>
