@@ -1,11 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import RequireAuth from './components/RequireAuth';
 import Home from './routes/Home/Home';
 import Login from './routes/Login/Login';
 import Register from './routes/Login/Register';
 import Reset from './routes/Login/Reset';
 import Navbar from './shared/Navbar';
+import Purchase from './shared/Purchase';
 
 
 function App() {
@@ -18,6 +20,11 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/reset' element={<Reset></Reset>}></Route>
+        <Route path='/purchase/:id' element={
+          <RequireAuth>
+               <Purchase></Purchase>
+          </RequireAuth>
+        }></Route>
         <Route></Route>
       </Routes>
       <ToastContainer />

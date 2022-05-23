@@ -3,73 +3,73 @@
         "toolName": "Ball Pen Hammer",
         "toolImage": "https://i.ibb.co/fQtCPBj/ball-pen-hammer.jpg",
         "toolDescription": "Ball pen hammer used for pin worker time.it is very friendly ",
-        "toolOrderQuantity": 15041,
+        "toolOrderQuantity":50,
         "toolAvailableQuantity": 14577,
-        "toolPrice": 400213.051272
+        "toolPrice":150
     },
     {
         "toolName": "Claw Hammer",
         "toolImage": "https://i.ibb.co/gmQWfFs/claw-hammer.jpg",
         "toolDescription": "claw hammer is a nice hammer then other hammer",
-        "toolOrderQuantity": 40012,
+        "toolOrderQuantity":30,
         "toolAvailableQuantity": 35734,
-        "toolPrice": 80892.781789
+        "toolPrice":200
     },
     {
         "toolName": "Magnetic Stubby hammer",
         "toolImage": "https://i.ibb.co/Kydh3gn/magnetic-stubby.jpg",
         "toolDescription": "Magnetic Stubby hammer Pulmonary tuberculosis, unspecified, tubercle bacilli not found by bacteriological examination",
-        "toolOrderQuantity": 11433,
+        "toolOrderQuantity": 50,
         "toolAvailableQuantity": 46492,
-        "toolPrice": 350080.452322
+        "toolPrice":170
     },
     {
         "toolName": "Mallet Hammer",
         "toolImage": "https://i.ibb.co/6bLxvNS/mallet-hammer.jpg",
         "toolDescription": "Mallet Hammer need for every person .This is a very nice product",
-        "toolOrderQuantity": 12611,
+        "toolOrderQuantity": 100,
         "toolAvailableQuantity": 22957,
-        "toolPrice": 391258.235425
+        "toolPrice":120
     },
     {
         "toolName": "Pedros hammer",
         "toolImage": " https://i.ibb.co/52S9kbJ/pedros-the-hammer.jpg",
         "toolDescription": "Pedros hammer Contraceptive surveillance, unspecified",
-        "toolOrderQuantity": 13112,
+        "toolOrderQuantity": 40,
         "toolAvailableQuantity": 31154,
-        "toolPrice": 277957.963331
+        "toolPrice":250
     },
     {
         "toolName": "Rubber Mallet hammer",
         "toolImage": " https://i.ibb.co/s9LCKmD/rubber-mallet-hamer.jpg",
         "toolDescription": "Rubber Mallet hammer neoplasm of cerebellum nos",
-        "toolOrderQuantity": 38222,
+        "toolOrderQuantity": 50,
         "toolAvailableQuantity": 16153,
-        "toolPrice": 415706.503799
+        "toolPrice": 140
     },
     {
         "toolName": "Sledge hammer",
         "toolImage": " https://i.ibb.co/S6qkLzv/sledge-hamar.jpg",
         "toolDescription": " Sledge hammer Unspecified mechanical complication of internal orthopedic device, implant, and graft",
-        "toolOrderQuantity": 39623,
+        "toolOrderQuantity": 100,
         "toolAvailableQuantity": 41024,
-        "toolPrice": 157947.502462
+        "toolPrice":65
     },
     {
         "toolName": "Sledge Pin Hammer",
         "toolImage": " https://i.ibb.co/3k9tGdy/sledge-hammer.jpg",
         "toolDescription": "Sledge Pin Hammer is pre-eclampsia, delivered, with or without mention of antepartum condition",
-        "toolOrderQuantity": 18101,
+        "toolOrderQuantity": 60,
         "toolAvailableQuantity": 27444,
-        "toolPrice": 373226.954006
+        "toolPrice":135
     },
     {
         "toolName": "Warrington Hammer",
         "toolImage": "https://i.ibb.co/3yWg2wC/warrington-Hammer.jpg",
         "toolDescription": "Warrington Hammer External hemorrhoids without mention of complication",
-        "toolOrderQuantity": 43213,
+        "toolOrderQuantity":10,
         "toolAvailableQuantity": 20998,
-        "toolPrice": 83648.798976
+        "toolPrice":300
     }
     
 ]
