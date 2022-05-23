@@ -14,7 +14,7 @@ const Navbar = () => {
     }
     
     return (
-        <div className='shadow-sm sticky top-0 z-10 '>
+        <div className='shadow-sm  sticky top-0 z-50'>
             <nav className="relative flex flex-wrap items-center justify-between px-2  py-2 bg-gray-500">
                 <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
@@ -38,7 +38,7 @@ const Navbar = () => {
                             </li>
                             {
                                 user && <li className="nav-item">
-                                    <CustomLink to={'/manageitems'} className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75' >Manage Items</CustomLink>
+                                    <CustomLink to={'/dashboard'} className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75' >DashBoard</CustomLink>
                                 </li>
                             }
                             {
@@ -84,6 +84,13 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
+
+                    <div className="navbar-end lg:hidden">
+                    <label htmlFor="dashboard-drawer" tabIndex="1" className="btn btn-ghost lg:hidden">
+                        <i className="fa fa-tachometer text-xl" aria-hidden="true"></i>
+                    </label>
+                </div>
+
                 </div>
             </nav>
         </div>
