@@ -1,5 +1,7 @@
 import React from 'react';
+import ReviewCard from '../../components/ReviewCard ';
 import useCarousels from '../../hooks/useCarousels';
+import Reviews from './Reviews';
 import Tools from './Tools';
 
 
@@ -31,6 +33,14 @@ const Home = () => {
 
             {/* product tools set */}
             <Tools></Tools>
+
+            {/* reviews  */}
+            <Reviews></Reviews>
+
+            {/* products review  */}
+
+
+            
         </div>
 
 

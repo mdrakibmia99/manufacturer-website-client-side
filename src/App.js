@@ -9,6 +9,7 @@ import ManageProducts from './routes/Dashboard/Admin/ManageProducts';
 import Dashboard from './routes/Dashboard/Dashboard';
 import AddingReview from './routes/Dashboard/User/AddingReview';
 import MyOrders from './routes/Dashboard/User/MyOrders';
+import AllReviews from './routes/Home/AllReviews';
 import Home from './routes/Home/Home';
 import Login from './routes/Login/Login';
 import Register from './routes/Login/Register';
@@ -32,7 +33,7 @@ function App() {
             <Purchase></Purchase>
           </RequireAuth>
         }></Route>
-
+       <Route path={"/home/reviews"} element={<AllReviews></AllReviews>}></Route>
 
         <Route
           path='/dashboard'
