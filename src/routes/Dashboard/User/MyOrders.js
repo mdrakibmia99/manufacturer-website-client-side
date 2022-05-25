@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import OrderCancellation from './OrderCancellation';
 
 const MyOrders = () => {
     const { data: userOrders, refetch } = useQuery("userOrders", () => fetch("http://localhost:5000/userOrders").then(res => res.json()));
     const [cancelOrder,setCancelOrder]=useState(null);
+    const navigate=useNavigate();
     return (
         <div className="overflow-x-auto">
         <table className="table w-full">
@@ -33,8 +35,21 @@ const MyOrders = () => {
                         <td><span className='mr-1'>$</span>{userOrder?.singlePrice}</td>
                         <td><span className='mr-1'>$</span>{userOrder?.totalPrice}</td>
                         <td>
-                            <label htmlFor="order-cancellation" className='btn btn-sm btn-outline btn-error mr-1' onClick={() => setCancelOrder(userOrder)}>Cancel</label>
-                            <button className='btn btn-sm btn-outline btn-success ml-1'>Payment</button>
+                            {
+                                (userOrder?.totalPrice && !userOrder?.paid)?
+                                <label htmlFor="order-cancellation" className='btn btn-sm btn-outline btn-error mr-1' onClick={() => setCancelOrder(userOrder)}>Cancel</label>
+                                : ""
+                            }
+                            {
+                                        (userOrder?.totalPrice && !userOrder?.paid)
+                                        ?
+                                        <button className='btn btn-sm btn-outline btn-success ml-1'
+                                            onClick={() => navigate(`/dashboard/payment/${userOrder?._id}`)}
+                                            >Payment</button>
+                                            :
+                                            <span className='text-success ml-4'>Paid</span>
+                                    }
+
                         </td>
                     </tr>)
                 }

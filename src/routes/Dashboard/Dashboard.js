@@ -23,7 +23,7 @@ const Dashboard = () => {
                     <li className='bg-black'><CustomLink to="/dashboard/addProduct" className="p-3">Adding Product</CustomLink></li>
                     <li className='bg-black'><CustomLink to="/dashboard/makeAdmin" className="p-3">Make Admin</CustomLink></li>
                     <li className='bg-black'><CustomLink to="/dashboard/manageOrders" className="p-3">Manage Orders</CustomLink></li>
-                    <li className='bg-black'><CustomLink to="/dashboard/manageProducts" className="p-3">Manage Products</CustomLink></li>
+                    <li className='bg-black'><CustomLink to="/dashboard/profile" className="p-3">Profile</CustomLink></li>
                 </ul>
             </div>
         </div>

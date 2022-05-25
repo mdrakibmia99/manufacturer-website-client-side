@@ -2,9 +2,10 @@ import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
-import auth from '../firebase.init';
-import Loading from '../shared/Loading';
-import ParticleAnimation from './ParticleAnimation';
+import ParticleAnimation from '../../../components/ParticleAnimation';
+import auth from '../../../firebase.init';
+import Loading from '../../../shared/Loading';
+
 
 
 const MyProfile = () => {

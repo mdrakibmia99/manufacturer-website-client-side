@@ -41,11 +41,7 @@ const Navbar = () => {
                                     <CustomLink to={'/dashboard'} className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75' >DashBoard</CustomLink>
                                 </li>
                             }
-                            {
-                                user && <li className="nav-item">
-                                    <CustomLink to={'/profile'} className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75' >Profile</CustomLink>
-                                </li>
-                            }
+                           
                            
                             {
                                 user ? <li className="nav-item">
