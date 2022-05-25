@@ -1,5 +1,6 @@
-import React from 'react';
-import ReviewCard from '../../components/ReviewCard ';
+
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 import useCarousels from '../../hooks/useCarousels';
 import Reviews from './Reviews';
 import Tools from './Tools';
@@ -10,6 +11,8 @@ const Home = () => {
     const [carousels] = useCarousels();
     const nextSliderPoint=["#slide4","#slide1","#slide2","#slide3"];
     const previousSliderPoint=["#slide2","#slide3","#slide4","#slide1"];
+
+   
     return (
         <div>
             <div className='container mx-auto'>

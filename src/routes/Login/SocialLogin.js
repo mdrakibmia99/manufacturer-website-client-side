@@ -6,6 +6,7 @@ import Loading from '../../shared/Loading';
 
 
 const SocialLogin = () => {
+    // const [user1]=useAuthState(auth);
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     let catchError;
     const navigate = useNavigate();
@@ -17,9 +18,13 @@ const SocialLogin = () => {
     if (error) {
         catchError = <p>Error: {error?.message} </p>
     }
-    if (user) {
+    if(user){
         navigate(from, { replace: true })
     }
+    
+       
+
+   
     return (
         <div >
             <div className="divider">OR</div>

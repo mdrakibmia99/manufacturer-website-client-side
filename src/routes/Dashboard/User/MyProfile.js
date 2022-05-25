@@ -3,6 +3,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import ParticleAnimation from '../../../components/ParticleAnimation';
+import ProfileUpdate from '../../../components/ProfileUpdate';
 import auth from '../../../firebase.init';
 import Loading from '../../../shared/Loading';
 
@@ -14,7 +15,7 @@ const MyProfile = () => {
 
 
     const [user, loading] = useAuthState(auth);
-    // console.log(user);
+
     const navigate = useNavigate();
     if (loading) {
         return <Loading></Loading>
@@ -32,11 +33,20 @@ const MyProfile = () => {
                                     <img src={user?.photoURL || "https://i.ibb.co/LtxYmTj/user.png"} alt='profile' />
                                 </div>
                             </div>
-                            <form >
-                                <input type="file" className="" />
-                                <input type="submit" value={"Update"} />
+                           {/* modal  */}
+                            <div className='mt-5'>
+                                <label for="profile_update" class="text-center mt-3 border-2 p-1 border-primary hover:bg-primary hover:text-white font-bold rounded-lg ease-in duration-300">Update Profile</label>
+                                <input type="checkbox" id="profile_update" class="modal-toggle" />
+                                <div class="modal">
+                                    <div class="modal-box relative">
+                                        <label for="profile_update" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                        <h3 class="text-lg font-bold">Update Profile!</h3>
+                                       <ProfileUpdate></ProfileUpdate>
+                                    </div>
+                                </div>
+                            </div>
 
-                            </form>
+
                             <h1 className="text-gray-800 font-semibold text-xl mt-5">{user?.displayName}</h1>
                             <h1 className="text-gray-500 text-sm">{user?.email}</h1>
                             <h1 className="text-gray-500 text-sm p-4 text-justify">
@@ -62,7 +72,7 @@ const MyProfile = () => {
 
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

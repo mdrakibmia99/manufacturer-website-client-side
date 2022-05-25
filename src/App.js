@@ -16,6 +16,7 @@ import Home from './routes/Home/Home';
 import Login from './routes/Login/Login';
 import Register from './routes/Login/Register';
 import Reset from './routes/Login/Reset';
+import PageNotFound from './routes/PageNotFound/PageNotFound';
 import Navbar from './shared/Navbar';
 import Purchase from './shared/Purchase';
 
@@ -49,12 +50,13 @@ function App() {
 
           {/* admin segment */}
           <Route path='addProduct' element={<AddProduct />} />
-          <Route path='makeAdmin' element={<MakeAdmin />} />
+          <Route path='makeAdmin' element={<MakeAdmin></MakeAdmin>}></Route>
           <Route path='manageOrders' element={<ManageOrders />} />
-          <Route path='manageProducts' element={<ManageProducts />} />
+          <Route path='manageProduct' element={<ManageProducts />} />
           <Route path='payment/:id' element={<Payment/>} />
           <Route path='profile' element={<MyProfile></MyProfile>} />
         </Route>
+        <Route path='*' element={<PageNotFound></PageNotFound>}></Route>
 
       </Routes>
       <ToastContainer />

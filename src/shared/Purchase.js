@@ -44,7 +44,6 @@ const Purchase = () => {
                 .then(response => {
                     const { data } = response;
                     if (data.insertedId) {
-                        console.log(response);
                         toast.success("Your Order confirm.Please check in Dashboard")
                     }
 

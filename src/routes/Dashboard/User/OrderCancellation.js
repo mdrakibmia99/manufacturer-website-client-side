@@ -2,9 +2,10 @@ import axios from 'axios';
 import React from 'react';
 
 const OrderCancellation = ({ cancelOrder, setCancelOrder, refetch }) => {
-    const handleOrderCancel = () => {
+
+    const handleOrderCancel = (id) => {
         const deleteUserOrder = async () => {
-            const url = `http://localhost:5000/userOrder/${cancelOrder?.userEmail}`;
+            const url = `http://localhost:5000/userOrder/${id}`;
             const { data } = await axios.delete(url);
             console.log(data);
             refetch();
@@ -20,7 +21,7 @@ const OrderCancellation = ({ cancelOrder, setCancelOrder, refetch }) => {
                     <h3 className="font-bold text-lg">Congratulations random Interner user!</h3>
                     <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
                     <div className="modal-action">
-                        <label htmlFor="order-cancellation" className="btn btn-sm btn-outline btn-success" onClick={() => handleOrderCancel()}>Okay</label>
+                        <label htmlFor="order-cancellation" className="btn btn-sm btn-outline btn-success" onClick={() => handleOrderCancel(cancelOrder._id)}>Okay</label>
                         <label htmlFor="order-cancellation" className="btn btn-sm btn-outline btn-error">Cancel</label>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ const useReviews = () => {
         axios.get('http://localhost:5000/reviews')
             .then(res => setReviews(res.data))
     }, []);
-    console.log("review api call",reviews)
+
 
     return [reviews];
 };

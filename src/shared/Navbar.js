@@ -48,7 +48,7 @@ const Navbar = () => {
                                     <button className='lg:border-2  sm:border-0 px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75' onClick={handleSignOut}>LogOut </button>
                                 </li>:
                                 <li className="nav-item">
-                                <CustomLink to={'/login'} className='lg:border-2 sm:border-0 px-3 py-2 flex items-center text-xs uppercase font-bold  text-white hover:opacity-75' > LogIn</CustomLink>
+                                <CustomLink to={'/login'} className='lg:border-2 sm:border-0 px-3 py-2 flex items-center text-xs uppercase font-bold  text-white hover:opacity-75 ml-3' > LogIn</CustomLink>
                             </li>
                             }
 

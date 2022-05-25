@@ -31,7 +31,6 @@ const AddingReview = () => {
             .then(response => {
                 const { data } = response;
                 if (data.acknowledged) {
-                    console.log(response);
                     toast.success("Your reviews done.Check Home page")
                     event.target.reset();
                 }
