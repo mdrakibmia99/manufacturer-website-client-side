@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MyProfile from './components/MyProfile';
 import RequireAuth from './components/RequireAuth';
 import AddProduct from './routes/Dashboard/Admin/AddProduct';
 import MakeAdmin from './routes/Dashboard/Admin/MakeAdmin';
@@ -53,7 +54,11 @@ function App() {
         </Route>
 
 
-        <Route></Route>
+        <Route path='/profile' element={
+          <RequireAuth>
+            <MyProfile></MyProfile>
+          </RequireAuth>
+        }></Route>
       </Routes>
       <ToastContainer />
     </div>

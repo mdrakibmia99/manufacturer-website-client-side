@@ -43,23 +43,10 @@ const Navbar = () => {
                             }
                             {
                                 user && <li className="nav-item">
-                                    <CustomLink to={'/additems'} className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75' >Add items</CustomLink>
+                                    <CustomLink to={'/profile'} className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75' >Profile</CustomLink>
                                 </li>
                             }
-                            {
-                                user && <li className="nav-item">
-                                    <CustomLink to={'/myitems'} className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75' > My Items</CustomLink>
-                                </li>
-                            }
-                            {
-                                user && <li className="nav-item">
-                                    <CustomLink to={'/allOrderProduct'} className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75' > All Orders</CustomLink>
-                                </li>
-                            }
-                            <li className="nav-item mr-2">
-
-                                <CustomLink to={'/blog'} className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75' >Blog</CustomLink>
-                            </li>
+                           
                             {
                                 user ? <li className="nav-item">
                                     <button className='lg:border-2  sm:border-0 px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75' onClick={handleSignOut}>LogOut </button>
