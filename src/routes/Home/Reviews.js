@@ -38,7 +38,7 @@ const Reviews = () => {
                     <div className="stat-figure text-secondary">
                         <div className="avatar online">
                             <div className="w-16 rounded-full">
-                                <img src={user?.photoURL} alt='user-avatar' />
+                                <img src={user?.photoURL || "https://i.ibb.co/LtxYmTj/user.png"} alt='user-avatar' />
                             </div>
                         </div>
                     </div>

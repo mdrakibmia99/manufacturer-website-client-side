@@ -59,7 +59,7 @@ const Navbar = () => {
                                     <p className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75 mb-0'>
                                         {`${(user?.displayName) ? user.displayName : ""}`}
                                     </p>
-                                    {user?.photoURL && <img src={user.photoURL} alt="dp" className='rounded-full w-8 h-8 mr-2' />}
+                                    { <img src={user.photoURL || "https://i.ibb.co/LtxYmTj/user.png"} alt="dp" className='rounded-full w-8 h-8 mr-2' />}
                                 </li>
                                 :
                                 ""

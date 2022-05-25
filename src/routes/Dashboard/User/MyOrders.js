@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import OrderCancellation from './OrderCancellation';
 
 const MyOrders = () => {
-    const { data: userOrders, refetch } = useQuery("userOrders", () => fetch("http://localhost:5000/userOrders").then(res => res.json()));
+    const [user]=useAuthState(auth);
+    const url=`http://localhost:5000/userOrders?email=${user?.email}`
+    const { data: userOrders, refetch } = useQuery("userOrders", () => fetch(url).then(res => res.json()));
     const [cancelOrder,setCancelOrder]=useState(null);
     const navigate=useNavigate();
     return (
