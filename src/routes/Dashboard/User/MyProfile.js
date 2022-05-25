@@ -35,12 +35,12 @@ const MyProfile = () => {
                             </div>
                            {/* modal  */}
                             <div className='mt-5'>
-                                <label for="profile_update" class="text-center mt-3 border-2 p-1 border-primary hover:bg-primary hover:text-white font-bold rounded-lg ease-in duration-300">Update Profile</label>
-                                <input type="checkbox" id="profile_update" class="modal-toggle" />
-                                <div class="modal">
-                                    <div class="modal-box relative">
-                                        <label for="profile_update" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                                        <h3 class="text-lg font-bold">Update Profile!</h3>
+                                <label htmlFor="profile_update" className="text-center mt-3 border-2 p-1 border-primary hover:bg-primary hover:text-white font-bold rounded-lg ease-in duration-300">Update Profile</label>
+                                <input type="checkbox" id="profile_update" className="modal-toggle" />
+                                <div className="modal">
+                                    <div className="modal-box relative">
+                                        <label htmlFor="profile_update" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                        <h3 className="text-lg font-bold">Update Profile!</h3>
                                        <ProfileUpdate></ProfileUpdate>
                                     </div>
                                 </div>

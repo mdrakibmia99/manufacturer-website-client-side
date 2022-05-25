@@ -24,8 +24,8 @@ const MakeAdmin = () => {
     }
     return (
         <div>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>
@@ -38,7 +38,7 @@ const MakeAdmin = () => {
                         {
                             makeUserAdmin.map((userAdmin, index) => <tr
                                 key={userAdmin?._id}
-                                class="hover"
+                                className="hover"
                             >
                                 <th>{index + 1}</th>
                                 <td>{userAdmin?.name}</td>

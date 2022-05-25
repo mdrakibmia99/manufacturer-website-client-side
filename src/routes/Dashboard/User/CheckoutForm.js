@@ -112,7 +112,6 @@ const CheckoutForm = ({ userOrder }) => {
                         },
                     }}
                 />
-                {/* <button type="submit" disabled={!stripe} >Pay</button> */}
                 <button
                     type="submit"
                     disabled={!stripe || !clientSecret}

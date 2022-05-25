@@ -45,7 +45,6 @@ const AddProduct = () => {
     
         return (
             <div>
-                <h2>This is Add Product route</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='text-center'>
 

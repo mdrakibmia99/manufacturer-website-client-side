@@ -44,13 +44,13 @@ const AddingReview = () => {
     }
     return (
         <div>
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content lg:flex-row">
-                    <div class="text-center lg:text-left lg:w-1/3 pr-5 hidden lg:block">
-                        <h1 class="text-5xl font-bold">Reviews !!</h1>
-                        <p class="py-6">Please Write a review.write your experience for how easy to use the site is.</p>
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content lg:flex-row">
+                    <div className="text-center lg:text-left lg:w-1/3 pr-5 hidden lg:block">
+                        <h1 className="text-5xl font-bold">Reviews !!</h1>
+                        <p className="py-6">Please Write a review.write your experience for how easy to use the site is.</p>
                     </div>
-                    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         
                             <form
                                 className="card w-96 sm-w-full bg-base-100 shadow-xl mx-auto"
@@ -60,26 +60,26 @@ const AddingReview = () => {
                                     <input
                                         type="text"
                                         value={user?.displayName}
-                                        class="input input-bordered w-full max-w-xs mb-4"
+                                        className="input input-bordered w-full max-w-xs mb-4"
                                         name="email"
                                         readOnly
                                     />
                                     <input
                                         type="text"
                                         value={user?.email}
-                                        class="input input-bordered w-full max-w-xs mb-4"
+                                        className="input input-bordered w-full max-w-xs mb-4"
                                         name="email"
                                         readOnly
                                     />
                                     <textarea
-                                        class="textarea textarea-bordered"
+                                        className="textarea textarea-bordered"
                                         placeholder="Enter your feelings about this ordered product"
                                         name='comment'
                                         required
                                     />
                                     <input
                                         type="number"
-                                        class="input input-bordered w-full max-w-xs mb-4"
+                                        className="input input-bordered w-full max-w-xs mb-4"
                                         placeholder="Enter your rating 1 to 5"
                                         name="rating"
                                         required
