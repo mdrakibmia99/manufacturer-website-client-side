@@ -37,19 +37,19 @@ const Dashboard = () => {
                     {
                         userRole?.role === "admin" ?
                             <>
-                                <li className='bg-black'><CustomLink className="p-3" to="/dashboard/addProduct">Adding Product</CustomLink></li>
-                                <li className='bg-black'><CustomLink className="p-3" to="/dashboard/makeAdmin">Make Admin</CustomLink></li>
-                                <li className='bg-black'><CustomLink className="p-3" to="/dashboard/manageOrders">Manage Orders</CustomLink></li>
-                                <li className='bg-black'><CustomLink className="p-3" to="/dashboard/manageProduct">Manage Product</CustomLink></li>
+                                <li className='bg-black text-white'><CustomLink className="p-3" to="/dashboard/addProduct">Adding Product</CustomLink></li>
+                                <li className='bg-black text-white'><CustomLink className="p-3" to="/dashboard/makeAdmin">Make Admin</CustomLink></li>
+                                <li className='bg-black text-white'><CustomLink className="p-3" to="/dashboard/manageOrders">Manage Orders</CustomLink></li>
+                                <li className='bg-black text-white'><CustomLink className="p-3" to="/dashboard/manageProduct">Manage Product</CustomLink></li>
                             </> :
                             <>
-                                <li className='bg-black'><CustomLink className="p-3" to="/dashboard/addingReview">Adding Review</CustomLink></li>
-                                <li className='bg-black' ><CustomLink className="p-3" to="/dashboard/myOrder">My Orders</CustomLink></li>
+                                <li className='bg-black text-white'><CustomLink className="p-3" to="/dashboard/addingReview">Adding Review</CustomLink></li>
+                                <li className='bg-black text-white' ><CustomLink className="p-3" to="/dashboard/myOrder">My Orders</CustomLink></li>
                             </>
 
                     }
                     
-                    <li className='bg-black'><CustomLink className="p-3" to="/dashboard/profile">My Profile</CustomLink></li>
+                    <li className='bg-black text-white'><CustomLink className="p-3" to="/dashboard/profile">My Profile</CustomLink></li>
                 </ul>
             </div>
         </div>

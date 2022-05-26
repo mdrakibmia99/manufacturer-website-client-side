@@ -5,17 +5,29 @@ import Loading from '../../../shared/Loading';
 
 const ManageOrders = () => {
     const { data: manageOrders, isLoading, refetch } = useQuery('manageOrders', () => fetch("http://localhost:5000/userOrders").then(res => res.json()));
-     console.log("mange order",manageOrders)
-    const reduceAvailability = (totalProducts, availableQTY, id) => {
-        console.log("mange order 2",totalProducts,availableQTY)
+    const reduceAvailability = (totalProducts, availableQTY, id,orderId) => {
+        console.log("order id",orderId)
 
         const url = `http://localhost:5000/userOrder/${id}`;
         const updateAvailability = async () => {
-            const { data } = await axios.put(url, { toolAvailableQuantity: (parseInt(availableQTY) - parseInt(totalProducts)) });
+            const { data } = await axios.put(url, { toolAvailableQuantity: (parseInt(availableQTY) - parseInt(totalProducts))});
             refetch();
             console.log(data);
         };
         updateAvailability();
+
+
+        const url2 = `http://localhost:5000/userOrderProduct/${orderId}`;
+        const updateAvailability2 = async () => {
+            const { data } = await axios.put(url2, { toolAvailableQuantity: (parseInt(availableQTY) - parseInt(totalProducts))});
+            refetch();
+        };
+        updateAvailability2();
+
+
+
+
+      
     };
 
     if (isLoading) {
@@ -55,11 +67,11 @@ const ManageOrders = () => {
                                         :
                                         <button
                                             className='btn btn-outline btn-success'
-                                            onClick={() => reduceAvailability(userOrder?.totalProducts, userOrder?.toolAvailableQuantity, userOrder?._id)}
+                                            onClick={() => reduceAvailability(userOrder?.totalProducts, userOrder?.toolAvailableQuantity, userOrder?._id ,userOrder?.orderId)}
                                         >Make Done</button>
-                                    :
-                                    <span className='text-error font-bold'>Still not paying</span>
-                            }
+                                     :
+                                     <span className='text-error font-bold'>Still not paying</span>
+                              } 
                         </td>
                     </tr>)
                 }
