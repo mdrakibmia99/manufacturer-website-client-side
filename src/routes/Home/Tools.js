@@ -15,7 +15,7 @@ const Tools = () => {
     }
 
    
-    const { data: products } = useQuery(['products',page], () => fetch(`http://localhost:5000/products?page=${page}&size=${3}`).then(res => {
+    const { data: products } = useQuery(['products',page], () => fetch(`http://localhost:5000/products?page=${page}`).then(res => {
         setLoading(false);
         return res.json()
     }))
