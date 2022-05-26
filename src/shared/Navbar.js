@@ -14,13 +14,13 @@ const Navbar = () => {
         signOut(auth);
         localStorage.removeItem('accessToken')
     }
-    
+
     return (
         <div className='shadow-sm  sticky top-0 z-50'>
             <nav className="relative flex flex-wrap items-center justify-between px-2  py-2 bg-white">
                 <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-                        <Link  to={'/home'} >
+                        <Link to={'/home'} >
                             <img src={navbarLogo} alt="hammer" className='max-w-[120px]' />
                         </Link>
                         <button
@@ -43,15 +43,21 @@ const Navbar = () => {
                                     <CustomLink to={'/dashboard'} className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-secondary hover:opacity-75' >DashBoard</CustomLink>
                                 </li>
                             }
-                           
-                           
+                            <li className="nav-item">
+                                <CustomLink to={'/portfolio'} className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-secondary hover:opacity-75' >Portfolio</CustomLink>
+                            </li>
+                            <li className="nav-item">
+                                <CustomLink to={'/blogs'} className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-secondary hover:opacity-75' >Blogs</CustomLink>
+                            </li>
+
+
                             {
                                 user ? <li className="nav-item">
-                                    <button className='lg:border-2  sm:border-0 px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-secondary hover:opacity-75 ml-7' onClick={handleSignOut}>LogOut </button>
-                                </li>:
-                                <li className="nav-item">
-                                <CustomLink to={'/login'} className='lg:border-2 sm:border-0 px-3 py-2 flex items-center text-xs uppercase font-bold  text-secondary hover:opacity-75 ml-7' > LogIn</CustomLink>
-                            </li>
+                                    <button className='lg:border-2  sm:border-0 px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-secondary hover:opacity-75 lg:ml-7' onClick={handleSignOut}>LogOut </button>
+                                </li> :
+                                    <li className="nav-item">
+                                        <CustomLink to={'/login'} className='lg:border-2 sm:border-0 px-3 py-2 flex items-center text-xs uppercase font-bold  text-secondary hover:opacity-75 lg:ml-7' > LogIn</CustomLink>
+                                    </li>
                             }
 
                             {(user) ?
@@ -59,7 +65,7 @@ const Navbar = () => {
                                     <p className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-secondary hover:opacity-75 mb-0'>
                                         {`${(user?.displayName) ? user.displayName : ""}`}
                                     </p>
-                                    { <img src={user?.photoURL} alt="dp" className='rounded-full w-8 h-8 mr-2' />}
+                                    {<img src={user?.photoURL} alt="dp" className='rounded-full w-8 h-8 mr-2' />}
                                 </li>
                                 :
                                 ""
@@ -68,11 +74,18 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-                    <div className="navbar-end lg:hidden">
-                    <label htmlFor="dashboard-drawer" tabIndex="1" className="btn btn-ghost lg:hidden">
-                        <i className="fa fa-tachometer text-xl" aria-hidden="true"></i>
-                    </label>
-                </div>
+                    <div className='w-full flex justify-between'>
+                        <div className="navbar-end lg:hidden">
+                            <label htmlFor="dashboard-drawer" tabIndex="1" className="btn btn-ghost lg:hidden">
+                                <i className="fa fa-tachometer text-xl" aria-hidden="true"></i>
+                            </label>
+                        </div>
+                        <div className="navbar-end lg:hidden">
+                            <label htmlFor="portfolio-drawer" tabIndex="1" className="btn btn-ghost lg:hidden">
+                                <i className="fa fa-tachometer text-xl" aria-hidden="true"></i>
+                            </label>
+                        </div>
+                    </div>
 
                 </div>
             </nav>

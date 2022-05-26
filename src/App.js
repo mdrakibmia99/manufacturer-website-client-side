@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import RequireAuth from './components/RequireAuth';
+import Blogs from './routes/Blogs/Blogs';
 import AddProduct from './routes/Dashboard/Admin/AddProduct';
 import MakeAdmin from './routes/Dashboard/Admin/MakeAdmin';
 import ManageOrders from './routes/Dashboard/Admin/ManageOrders';
@@ -18,6 +19,12 @@ import Login from './routes/Login/Login';
 import Register from './routes/Login/Register';
 import Reset from './routes/Login/Reset';
 import PageNotFound from './routes/PageNotFound/PageNotFound';
+import AboutMe from './routes/Portfolio/AboutMe';
+import Education from './routes/Portfolio/Education';
+import Portfolio from './routes/Portfolio/Portfolio';
+import PortfolioHome from './routes/Portfolio/PortfolioHome';
+import Project from './routes/Portfolio/Project';
+import Technology from './routes/Portfolio/Technology';
 import Footer from './shared/Footer/Footer';
 import Navbar from './shared/Navbar';
 import Purchase from './shared/Purchase';
@@ -38,7 +45,8 @@ function App() {
             <Purchase></Purchase>
           </RequireAuth>
         }></Route>
-       <Route path={"/home/reviews"} element={<AllReviews></AllReviews>}></Route>
+        <Route path='blogs' element={<Blogs></Blogs>}></Route>
+        <Route path={"/home/reviews"} element={<AllReviews></AllReviews>}></Route>
 
         <Route
           path='/dashboard'
@@ -56,9 +64,21 @@ function App() {
           <Route path='makeAdmin' element={<MakeAdmin></MakeAdmin>}></Route>
           <Route path='manageOrders' element={<ManageOrders />} />
           <Route path='manageProduct' element={<ManageProducts />} />
-          <Route path='payment/:id' element={<Payment/>} />
+          <Route path='payment/:id' element={<Payment />} />
           <Route path='profile' element={<MyProfile></MyProfile>} />
         </Route>
+
+
+            <Route path='/portfolio' element={<Portfolio />}>
+            <Route index element={<PortfolioHome/>}></Route>
+              <Route path='aboutMe' element={<AboutMe/>}></Route>
+              <Route path='education' element={<Education/>}></Route>
+              <Route path='project' element={<Project/>}></Route>
+              <Route path='technology' element={<Technology/>}></Route>
+            </Route>
+
+
+
         <Route path='*' element={<PageNotFound></PageNotFound>}></Route>
 
       </Routes>
