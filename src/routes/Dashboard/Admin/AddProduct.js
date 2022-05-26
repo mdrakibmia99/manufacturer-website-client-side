@@ -33,7 +33,7 @@ const AddProduct = () => {
                 };
 
                 const postProductToDB = async () => {
-                    const url = `http://localhost:5000/product`;
+                    const url = `https://thawing-wildwood-00183.herokuapp.com/product`;
                     const { data } = await axios.post(url, productInfo);
                     console.log(data);
                     toast.success('Product added successfully!')

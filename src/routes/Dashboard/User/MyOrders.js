@@ -7,7 +7,7 @@ import OrderCancellation from './OrderCancellation';
 
 const MyOrders = () => {
     const [user]=useAuthState(auth);
-    const url=`http://localhost:5000/userOrders?email=${user?.email}`
+    const url=`https://thawing-wildwood-00183.herokuapp.com/userOrders?email=${user?.email}`
     const { data: userOrders, refetch } = useQuery("userOrders", () => fetch(url).then(res => res.json()));
     const [cancelOrder,setCancelOrder]=useState(null);
     const navigate=useNavigate();

@@ -6,10 +6,10 @@ import { toast } from 'react-toastify';
 import Loading from '../../../shared/Loading';
 
 const MakeAdmin = () => {
-    const { data: makeUserAdmin, isLoading, refetch } = useQuery('makeAdmin', () => fetch('http://localhost:5000/users').then(res => res.json()));
+    const { data: makeUserAdmin, isLoading, refetch } = useQuery('makeAdmin', () => fetch('https://thawing-wildwood-00183.herokuapp.com/users').then(res => res.json()));
 
     const makeAnUserAdmin = (id) => {
-        const url = `http://localhost:5000/user/${id}`;
+        const url = `https://thawing-wildwood-00183.herokuapp.com/user/${id}`;
         const putAdmin = async () => {
             const { data } = await axios.put(url);
             refetch();

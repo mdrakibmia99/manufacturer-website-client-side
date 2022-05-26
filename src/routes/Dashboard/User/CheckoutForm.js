@@ -15,7 +15,7 @@ const CheckoutForm = ({ userOrder }) => {
     const { _id,  totalPrice, name, email } = userOrder;
      console.log("user info ",userOrder)
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://thawing-wildwood-00183.herokuapp.com/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({totalPrice:totalPrice }),
@@ -76,7 +76,7 @@ const CheckoutForm = ({ userOrder }) => {
                 transactionId: paymentIntent?.id
             };
 
-            fetch(`http://localhost:5000/userOrder/${_id}`, {
+            fetch(`https://thawing-wildwood-00183.herokuapp.com/userOrder/${_id}`, {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json"

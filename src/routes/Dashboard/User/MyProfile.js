@@ -15,7 +15,7 @@ const MyProfile = () => {
 
     useEffect(() => {
         const getProfile = async () => {
-            const url = `http://localhost:5000/myProfile/${user?.email}`;
+            const url = `https://thawing-wildwood-00183.herokuapp.com/myProfile/${user?.email}`;
             const { data } = await axios.get(url);
             console.log(data);
             setProfile(data);
@@ -43,7 +43,7 @@ const MyProfile = () => {
         };
 
         const putMyProfileToDB = async () => {
-            const url = `http://localhost:5000/myProfile`;
+            const url = `https://thawing-wildwood-00183.herokuapp.com/myProfile`;
             const { data } = await axios.post(url, profileInfo);
             console.log(data);
             window.location.reload();

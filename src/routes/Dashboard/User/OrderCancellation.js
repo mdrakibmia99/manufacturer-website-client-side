@@ -5,7 +5,7 @@ const OrderCancellation = ({ cancelOrder, setCancelOrder, refetch }) => {
 
     const handleOrderCancel = (id) => {
         const deleteUserOrder = async () => {
-            const url = `http://localhost:5000/userOrder/${id}`;
+            const url = `https://thawing-wildwood-00183.herokuapp.com/userOrder/${id}`;
             const { data } = await axios.delete(url);
             console.log(data);
             refetch();

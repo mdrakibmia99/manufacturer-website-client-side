@@ -11,7 +11,7 @@ const Purchase = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     useEffect(() => {
-        axios.get(`http://localhost:5000/product/${id}`)
+        axios.get(`https://thawing-wildwood-00183.herokuapp.com/product/${id}`)
             .then(res => setProduct(res?.data[0]))
     }, [id]);
 
@@ -41,7 +41,7 @@ const Purchase = () => {
                 orderId:_id
             }
 
-            axios.post(`http://localhost:5000/userOrder`, orderData)
+            axios.post(`https://thawing-wildwood-00183.herokuapp.com/userOrder`, orderData)
                 .then(response => {
                     const { data } = response;
                     if (data.insertedId) {

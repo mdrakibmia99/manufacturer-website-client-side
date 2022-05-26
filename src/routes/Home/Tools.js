@@ -15,13 +15,13 @@ const Tools = () => {
     }
 
    
-    const { data: products } = useQuery(['products',page], () => fetch(`http://localhost:5000/products?page=${page}`).then(res => {
+    const { data: products } = useQuery(['products',page], () => fetch(`https://thawing-wildwood-00183.herokuapp.com/products?page=${page}`).then(res => {
         setLoading(false);
         return res.json()
     }))
 
     useEffect(() => {
-        fetch('http://localhost:5000/productCount')
+        fetch('https://thawing-wildwood-00183.herokuapp.com/productCount')
             .then(res => res.json())
             .then(data => {
                 const productCount = data.count;

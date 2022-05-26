@@ -11,7 +11,7 @@ const stripePromise = loadStripe('pk_test_51L19f1KRH8pza7uwgnzclYxnZ2NFCFnLEJE5s
 
 const Payment = () => {
     const { id } = useParams();
-    const url = `http://localhost:5000/userOrder/${id}`;
+    const url = `https://thawing-wildwood-00183.herokuapp.com/userOrder/${id}`;
     const { data: userOrder, isLoading } = useQuery(['userOrder', id], () => fetch(url).then(res => res.json()));
 
     if (isLoading) {

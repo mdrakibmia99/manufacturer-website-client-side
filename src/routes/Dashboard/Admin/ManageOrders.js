@@ -4,11 +4,11 @@ import { useQuery } from 'react-query';
 import Loading from '../../../shared/Loading';
 
 const ManageOrders = () => {
-    const { data: manageOrders, isLoading, refetch } = useQuery('manageOrders', () => fetch("http://localhost:5000/userOrders").then(res => res.json()));
+    const { data: manageOrders, isLoading, refetch } = useQuery('manageOrders', () => fetch("https://thawing-wildwood-00183.herokuapp.com/userOrders").then(res => res.json()));
     const reduceAvailability = (totalProducts, availableQTY, id,orderId) => {
         console.log("order id",orderId)
 
-        const url = `http://localhost:5000/userOrder/${id}`;
+        const url = `https://thawing-wildwood-00183.herokuapp.com/userOrder/${id}`;
         const updateAvailability = async () => {
             const { data } = await axios.put(url, { toolAvailableQuantity: (parseInt(availableQTY) - parseInt(totalProducts))});
             refetch();
@@ -17,7 +17,7 @@ const ManageOrders = () => {
         updateAvailability();
 
 
-        const url2 = `http://localhost:5000/userOrderProduct/${orderId}`;
+        const url2 = `https://thawing-wildwood-00183.herokuapp.com/userOrderProduct/${orderId}`;
         const updateAvailability2 = async () => {
             const { data } = await axios.put(url2, { toolAvailableQuantity: (parseInt(availableQTY) - parseInt(totalProducts))});
             refetch();

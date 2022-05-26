@@ -27,7 +27,7 @@ const AddingReview = () => {
                 ratings:rating
             }
             const email=user?.email
-            axios.put(`http://localhost:5000/reviews/${email}`, reviewData)
+            axios.put(`https://thawing-wildwood-00183.herokuapp.com/reviews/${email}`, reviewData)
             .then(response => {
                 const { data } = response;
                 if (data.acknowledged) {

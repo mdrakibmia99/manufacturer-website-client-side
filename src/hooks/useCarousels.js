@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const useCarousels = () => {
     const [carousels, setCarousels] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:5000/carousels')
+        axios.get('https://thawing-wildwood-00183.herokuapp.com/carousels')
             .then(res => setCarousels(res?.data))
     }, []);
 

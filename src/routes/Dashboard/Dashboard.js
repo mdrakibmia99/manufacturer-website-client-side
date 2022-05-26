@@ -10,7 +10,7 @@ const Dashboard = () => {
     const [user, loading] = useAuthState(auth);
     const [userRole, setUserRole] = useState("")
     useEffect(() => {
-        const url = `http://localhost:5000/user/${user?.email}`
+        const url = `https://thawing-wildwood-00183.herokuapp.com/user/${user?.email}`
         fetch(url)
             .then(res => res.json())
             .then(data => setUserRole(data))

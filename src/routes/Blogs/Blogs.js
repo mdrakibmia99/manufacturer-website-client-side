@@ -12,7 +12,7 @@ const Blogs = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/blogs')
+        axios.get('https://thawing-wildwood-00183.herokuapp.com/blogs')
             .then(res => {
                 setBlogs(res?.data);
                 setLoading(false);
