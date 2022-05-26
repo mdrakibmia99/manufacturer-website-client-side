@@ -1,8 +1,10 @@
 import React from 'react';
+import PageTitle from '../../shared/PageTitle';
 
 const Project = () => {
     return (
         <div className='h-full bg-zinc-800'>
+            <PageTitle title={'Project'} />
             <div className='flex justify-center'>
                 <h2 className='text-5xl mt-5 p-1 border-t-[orange] border-l-[orange] border-b-white border-r-white text-center text-white border-4'>Project</h2>
             </div>

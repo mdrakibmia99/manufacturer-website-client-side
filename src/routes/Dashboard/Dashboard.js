@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import CustomLink from '../../components/CustomLink';
 import auth from '../../firebase.init';
 import Loading from '../../shared/Loading';
+import PageTitle from '../../shared/PageTitle';
 
 const Dashboard = () => {
 
@@ -21,9 +22,10 @@ const Dashboard = () => {
     if (loading) {
         return <Loading />
     }
-    console.log("user role", userRole)
+
     return (
         <div className="drawer drawer-mobile z-0">
+            <PageTitle title={'Dashboard'} />
             <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content mt-4 ">
                 {/* <!-- Page content here --> */}

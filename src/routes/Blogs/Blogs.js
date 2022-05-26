@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
-import Footer from '../../shared/Footer/Footer';
 import Loading from '../../shared/Loading';
 import PageTitle from '../../shared/PageTitle';
 import Blog from './Blog';
@@ -50,7 +49,6 @@ const Blogs = () => {
             </div>
 
             <div className='mt-8'>
-                <Footer />
             </div>
         </div>
     );

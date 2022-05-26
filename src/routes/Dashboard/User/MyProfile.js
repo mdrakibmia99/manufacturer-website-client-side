@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import ParticleAnimation from '../../../components/ParticleAnimation';
 import auth from '../../../firebase.init';
+import PageTitle from '../../../shared/PageTitle';
 
 
 
@@ -17,7 +18,7 @@ const MyProfile = () => {
         const getProfile = async () => {
             const url = `https://thawing-wildwood-00183.herokuapp.com/myProfile/${user?.email}`;
             const { data } = await axios.get(url);
-            console.log(data);
+          
             setProfile(data);
         };
         getProfile();
@@ -45,7 +46,7 @@ const MyProfile = () => {
         const putMyProfileToDB = async () => {
             const url = `https://thawing-wildwood-00183.herokuapp.com/myProfile`;
             const { data } = await axios.post(url, profileInfo);
-            console.log(data);
+         
             window.location.reload();
         };
         putMyProfileToDB();
@@ -54,7 +55,8 @@ const MyProfile = () => {
 
 
     return (
-        <div>
+        <div className='max-h-screen'>
+            <PageTitle title={'Profile'} />
             <ParticleAnimation />
             <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:w-1/2 md:w-1/2 w-full bg-slate-300'>
                 <div className="flex items-center justify-center">
@@ -73,53 +75,53 @@ const MyProfile = () => {
                             profile?.email
                                 ?
                                 <form
-                                    className='mt-4'
+                                    className='mt-[-100px]'
                                 >
-                                    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 m-auto">
-                                        <div class="card-body">
-                                            <div class="form-control">
-                                                <label class="label">
-                                                    <span class="label-text">Education</span>
+                                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 m-auto">
+                                        <div className="card-body">
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Education</span>
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    class="input input-bordered"
+                                                    className="input input-bordered"
                                                     name='education'
                                                     value={profile?.education}
                                                     disabled
                                                 />
                                             </div>
-                                            <div class="form-control">
-                                                <label class="label">
-                                                    <span class="label-text">Location</span>
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Location</span>
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    class="input input-bordered"
+                                                    className="input input-bordered"
                                                     name='location'
                                                     value={profile?.location}
                                                     disabled
                                                 />
                                             </div>
-                                            <div class="form-control">
-                                                <label class="label">
-                                                    <span class="label-text">Phone</span>
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Phone</span>
                                                 </label>
                                                 <input
                                                     type="tel"
-                                                    class="input input-bordered"
+                                                    className="input input-bordered"
                                                     name='phone'
                                                     value={profile?.phone}
                                                     disabled
                                                 />
                                             </div>
-                                            <div class="form-control">
-                                                <label class="label">
-                                                    <span class="label-text">Linkedin</span>
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Linkedin</span>
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    class="input input-bordered"
+                                                    className="input input-bordered"
                                                     name='linkedin'
                                                     value={profile?.linkedin}
                                                     disabled
@@ -133,59 +135,59 @@ const MyProfile = () => {
                                     className='mt-4'
                                     onSubmit={handleMyProfile}
                                 >
-                                    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 m-auto">
-                                        <div class="card-body">
-                                            <div class="form-control">
-                                                <label class="label">
-                                                    <span class="label-text">Education</span>
+                                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 m-auto">
+                                        <div className="card-body">
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Education</span>
                                                 </label>
                                                 <input
                                                     type="text"
                                                     placeholder="education"
-                                                    class="input input-bordered"
+                                                    className="input input-bordered"
                                                     name='education'
                                                     required
                                                 />
                                             </div>
-                                            <div class="form-control">
-                                                <label class="label">
-                                                    <span class="label-text">Location</span>
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Location</span>
                                                 </label>
                                                 <input
                                                     type="text"
                                                     placeholder="city/district"
-                                                    class="input input-bordered"
+                                                    className="input input-bordered"
                                                     name='location'
                                                     required
                                                 />
                                             </div>
-                                            <div class="form-control">
-                                                <label class="label">
-                                                    <span class="label-text">Phone</span>
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Phone</span>
                                                 </label>
                                                 <input
                                                     type="tel"
                                                     placeholder="phone number"
-                                                    class="input input-bordered"
+                                                    className="input input-bordered"
                                                     name='phone'
                                                     required
                                                 />
                                             </div>
-                                            <div class="form-control">
-                                                <label class="label">
-                                                    <span class="label-text">Linkedin</span>
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Linkedin</span>
                                                 </label>
                                                 <input
                                                     type="text"
                                                     placeholder="profile link"
-                                                    class="input input-bordered"
+                                                    className="input input-bordered"
                                                     name='linkedin'
                                                     required
                                                 />
                                             </div>
-                                            <div class="form-control mt-6">
+                                            <div className="form-control mt-6">
                                                 <input
-                                                    class="btn btn-primary"
+                                                    className="btn btn-primary"
                                                     type="submit"
                                                     value="Save Data"
                                                 />

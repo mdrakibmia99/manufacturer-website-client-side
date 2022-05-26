@@ -1,8 +1,10 @@
 import React from 'react';
+import PageTitle from '../../shared/PageTitle';
 
 const AboutMe = () => {
     return (
         <div className='min-h-screen bg-zinc-800  w-full flex justify-center items-center'>
+           <PageTitle title={'About Me'} />
           <div className='w-full'>
 
           <div className='flex justify-center'>

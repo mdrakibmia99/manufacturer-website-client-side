@@ -2,17 +2,18 @@ import axios from 'axios';
 import React from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../../../shared/Loading';
+import PageTitle from '../../../shared/PageTitle';
 
 const ManageOrders = () => {
     const { data: manageOrders, isLoading, refetch } = useQuery('manageOrders', () => fetch("https://thawing-wildwood-00183.herokuapp.com/userOrders").then(res => res.json()));
     const reduceAvailability = (totalProducts, availableQTY, id,orderId) => {
-        console.log("order id",orderId)
+   
 
         const url = `https://thawing-wildwood-00183.herokuapp.com/userOrder/${id}`;
         const updateAvailability = async () => {
             const { data } = await axios.put(url, { toolAvailableQuantity: (parseInt(availableQTY) - parseInt(totalProducts))});
             refetch();
-            console.log(data);
+           
         };
         updateAvailability();
 
@@ -35,6 +36,7 @@ const ManageOrders = () => {
     }
     return (
         <div>
+            <PageTitle title={'Manage Order'} />
         <table className="table w-full">
             <thead>
                 <tr>

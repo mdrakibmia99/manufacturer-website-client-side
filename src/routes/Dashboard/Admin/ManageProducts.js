@@ -3,6 +3,7 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import Loading from '../../../shared/Loading';
+import PageTitle from '../../../shared/PageTitle';
 
 
 const ManageProducts = () => {
@@ -16,7 +17,7 @@ const ManageProducts = () => {
             const { data } = await axios.delete(url);
             toast.success('product deleted!');
             refetch();
-            console.log(data);
+        
         };
         deleteProduct();
     };
@@ -27,6 +28,7 @@ const ManageProducts = () => {
     
     return (
         <div>
+            <PageTitle title={'Manage Product'} />
         <table className="table w-full">
             <thead>
                 <tr>

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import PageTitle from '../../../shared/PageTitle';
 
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -35,7 +36,7 @@ const AddProduct = () => {
                 const postProductToDB = async () => {
                     const url = `https://thawing-wildwood-00183.herokuapp.com/product`;
                     const { data } = await axios.post(url, productInfo);
-                    console.log(data);
+                   
                     toast.success('Product added successfully!')
                 };
                 postProductToDB();
@@ -45,6 +46,7 @@ const AddProduct = () => {
     
         return (
             <div>
+                <PageTitle title={'AddProduct'} />
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='text-center'>
 

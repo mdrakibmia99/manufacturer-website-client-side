@@ -4,6 +4,7 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import Loading from '../../../shared/Loading';
+import PageTitle from '../../../shared/PageTitle';
 import CheckoutForm from './CheckoutForm';
 
 
@@ -20,6 +21,7 @@ const Payment = () => {
 
     return (
         <div>
+            <PageTitle title={'Payment'} />
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="card-title">Pay for <span className='text-primary'>{userOrder?.toolName}</span></h2>

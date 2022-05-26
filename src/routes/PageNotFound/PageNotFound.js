@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import PageTitle from '../../shared/PageTitle';
 import notFoundIng from './pagenotfound.jpg';
 
 
@@ -7,6 +8,7 @@ const PageNotFound = () => {
     const navigate=useNavigate();
     return (
         <div className="min-h-screen flex justify-center items-center">
+            <PageTitle title={'Page Not Found'} />
            <div className='text-center max-w-3xl'>
            <h1 className='text-primary text-4xl font-bold'>Oops..! 404 Page Not Found</h1>
             <p className='text-xl font-bold pt-2'>Looks like you came to wrong page on our server</p>

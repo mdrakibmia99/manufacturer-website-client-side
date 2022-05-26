@@ -32,11 +32,15 @@ const Tools = () => {
 
     return (
         <div className='container mx-auto lg:py-20 py-10'>
-            <h1 className='flex items-baseline justify-center my-5'><i className="fa fa-hashtag text-6xl" aria-hidden="true"></i><span className='text-4xl'>Product tools</span></h1>
+           
+            <div className='w-full flex justify-center items-center mb-5'>
+            <h1 className=' mt-5 text-4xl font-bold border-b-4 border-secondary '>Product tools</h1>
+            </div>
+           
             {
                 loading && <Loading />
             }
-            <div className='grid lg:grid-cols-3 grid-cols-1 gap-4'>
+            <div className='grid lg:grid-cols-3 grid-cols-1 gap-4 mt-5'>
                 {
                     products?.map(product => <div
                         key={product?._id}

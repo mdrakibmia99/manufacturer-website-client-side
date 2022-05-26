@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import PageTitle from '../../../shared/PageTitle';
 import OrderCancellation from './OrderCancellation';
 
 const MyOrders = () => {
@@ -13,6 +14,7 @@ const MyOrders = () => {
     const navigate=useNavigate();
     return (
         <div className="overflow-x-auto">
+            <PageTitle title={'MyOrder'} />
         <table className="table w-full">
             <thead>
                 <tr>

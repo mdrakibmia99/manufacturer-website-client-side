@@ -1,8 +1,10 @@
 import React from 'react';
+import PageTitle from '../../shared/PageTitle';
 
 const Education = () => {
     return (
         <div className='min-h-screen bg-zinc-800  w-full flex justify-center items-center'>
+           <PageTitle title={'Education'} />
           <div className='w-full'>
 
           <div className='flex justify-center'>
@@ -17,10 +19,6 @@ const Education = () => {
               border-[orange] px-5"> Resume</a>
              </div>
           </div>
-
-            
-        
-          
           </div>
     );
 };

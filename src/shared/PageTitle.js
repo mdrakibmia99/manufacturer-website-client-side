@@ -7,7 +7,7 @@ const PageTitle = ({title}) => {
         <div>
             <Helmet>
                 <title>
-                    {title}-Ladies Fashion
+                    {title}-Boss Hammer Co
                 </title>
             </Helmet>
         </div>

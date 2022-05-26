@@ -4,11 +4,12 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Loading from '../../../shared/Loading';
+import PageTitle from '../../../shared/PageTitle';
 
 const AddingReview = () => {
     const [user,loading] = useAuthState(auth);
     const [ratingError,setRatingError]=useState("");
-    console.log("user printf",user)
+
     if(loading){
         return <Loading></Loading>
     }
@@ -44,6 +45,7 @@ const AddingReview = () => {
     }
     return (
         <div>
+            <PageTitle title={'AddReview'} />
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content lg:flex-row">
                     <div className="text-center lg:text-left lg:w-1/3 pr-5 hidden lg:block">

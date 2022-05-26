@@ -13,7 +13,7 @@ const CheckoutForm = ({ userOrder }) => {
     const [processing, setProcessing] = useState(false);
 
     const { _id,  totalPrice, name, email } = userOrder;
-     console.log("user info ",userOrder)
+  
     useEffect(() => {
         fetch("https://thawing-wildwood-00183.herokuapp.com/create-payment-intent", {
             method: "POST",
@@ -84,7 +84,7 @@ const CheckoutForm = ({ userOrder }) => {
                 body: JSON.stringify(payment)
             }).then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                
                     setProcessing(false);
                 })
         }

@@ -16,11 +16,7 @@ const ParticleAnimation = () => {
         init={particlesInit}
         loaded={particlesLoaded}
         options={{
-          background: {
-            color: {
-              value: "#000111",
-            },
-          },
+         
          
           fpsLimit: 120,
           interactivity: {

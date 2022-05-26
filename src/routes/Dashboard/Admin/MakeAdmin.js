@@ -4,6 +4,7 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import Loading from '../../../shared/Loading';
+import PageTitle from '../../../shared/PageTitle';
 
 const MakeAdmin = () => {
     const { data: makeUserAdmin, isLoading, refetch } = useQuery('makeAdmin', () => fetch('https://thawing-wildwood-00183.herokuapp.com/users').then(res => res.json()));
@@ -13,7 +14,7 @@ const MakeAdmin = () => {
         const putAdmin = async () => {
             const { data } = await axios.put(url);
             refetch();
-            console.log(data);
+         
             toast.success('admin inserted');
         };
         putAdmin();
@@ -24,6 +25,7 @@ const MakeAdmin = () => {
     }
     return (
         <div>
+            <PageTitle title={'MakeAdmin'} />
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
