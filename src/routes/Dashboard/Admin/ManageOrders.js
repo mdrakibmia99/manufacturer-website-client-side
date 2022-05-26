@@ -5,11 +5,13 @@ import Loading from '../../../shared/Loading';
 
 const ManageOrders = () => {
     const { data: manageOrders, isLoading, refetch } = useQuery('manageOrders', () => fetch("http://localhost:5000/userOrders").then(res => res.json()));
+     console.log("mange order",manageOrders)
+    const reduceAvailability = (totalProducts, availableQTY, id) => {
+        console.log("mange order 2",totalProducts,availableQTY)
 
-    const reduceAvailability = (totalQTY, availableQTY, id) => {
         const url = `http://localhost:5000/userOrder/${id}`;
         const updateAvailability = async () => {
-            const { data } = await axios.put(url, { toolAvailableQuantity: (parseInt(availableQTY) - parseInt(totalQTY)) });
+            const { data } = await axios.put(url, { toolAvailableQuantity: (parseInt(availableQTY) - parseInt(totalProducts)) });
             refetch();
             console.log(data);
         };
@@ -38,10 +40,10 @@ const ManageOrders = () => {
                         key={userOrder?._id}
                         className="hover">
                         <th>{index + 1}</th>
-                        <td>{userOrder?.userEmail}</td>
+                        <td>{userOrder?.email}</td>
                         <td>{userOrder?.toolName}</td>
-                        <td> {userOrder?.quantity}</td>
-                        <td><span className='mr-1'>$</span>{userOrder?.totalPrize}</td>
+                        <td> {userOrder?.totalProducts}</td>
+                        <td><span className='mr-1'>$</span>{userOrder?.totalPrice}</td>
                         <td>
                            
                             {
@@ -53,7 +55,7 @@ const ManageOrders = () => {
                                         :
                                         <button
                                             className='btn btn-outline btn-success'
-                                            onClick={() => reduceAvailability(userOrder?.quantity, userOrder?.toolAvailableQuantity, userOrder?._id)}
+                                            onClick={() => reduceAvailability(userOrder?.totalProducts, userOrder?.toolAvailableQuantity, userOrder?._id)}
                                         >Make Done</button>
                                     :
                                     <span className='text-error font-bold'>Still not paying</span>

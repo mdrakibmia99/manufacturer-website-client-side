@@ -1,26 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../shared/Loading';
-import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import SocialLogin from './SocialLogin';
+import useToken from '../../hooks/useToken';
 
 
 
 const Register = () => {
-    const [user, loading] = useAuthState(auth);
-    const [createUserWithEmailAndPassword, user1, loading1, error] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+ 
+    const [createUserWithEmailAndPassword, userEP, loading, error] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [signInWithGoogle, userGL, loading1, error1] = useSignInWithGoogle(auth);
     const [updateProfile, updating] = useUpdateProfile(auth);
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [token]=useToken(userEP || userGL);
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
     if (loading || loading1 || updating) {
         return <Loading></Loading>
     }
-    if (user || user1) {
+    if (token) {
         navigate(from, { replace: true });
     }
 
@@ -30,34 +31,14 @@ const Register = () => {
         const name = data?.name;
         const email = data?.email;
         const password = data?.password;
-        const user = {
-            name: name,
-            email: email
-        }
-        const urlUsr = `http://localhost:5000/user`;
-        const postUser = async () => {
-            await createUserWithEmailAndPassword(email, password);
-            await updateProfile({ displayName: name });
-            const request = await fetch(urlUsr, {
-                method: "POST",
-                headers: {
-                    'content-type': 'application/json',
-                },
-                body: JSON.stringify(user)
-            });
-            const response = await request.json();
-            if (response.insertedId) {
-                toast.success('Registration successful');
-
-            }
-        }; postUser();
-
-
-
-
-
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name,photoURL:"https://i.ibb.co/LtxYmTj/user.png" });
 
     };
+  const handleCreateGoogleLogin=async()=>{
+    await signInWithGoogle();
+  }
+
     return (
         <div className="min-h-screen flex justify-center items-center">
             <div className='w-full'>
@@ -142,13 +123,20 @@ const Register = () => {
                             </label>
                         </div>
                         {loading1 && <Loading></Loading>}
-                        {error ? <p className='text-[red]'>{error.message}</p> : ""}
+                        {error ? <p className='text-[red]'>{error?.message || error1?.message}</p> : ""}
                         <p className='py-3'>Already have an account?<Link to="/login" className='hover:text-black text-green-400'>Login</Link></p>
                         <input className='btn w-full max-w-xs text-white hover:bg-white hover:text-black' type="submit" value="Register" />
                     </div>
                 </form>
                 <div className='lg:w-1/4 w-full mx-auto'>
-                    <SocialLogin></SocialLogin>
+                <div >
+                {loading1 && <loading></loading>}
+                    {error1 &&  <p className='text-red'> {error1?.message}</p>}
+            <div className="divider">OR</div>
+            <button className="border-2 border-black bg-white py-2 hover:bg-b hover:bg-black hover:text-white  w-full mb-3  font-bold rounded"
+                type="submit" onClick={handleCreateGoogleLogin}><i className="fa fa-google text-green-700" aria-hidden="true"></i> Sign in with google</button>
+
+        </div>
                 </div>
             </div>
         </div>

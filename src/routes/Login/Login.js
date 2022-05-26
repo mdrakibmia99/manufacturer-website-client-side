@@ -1,29 +1,37 @@
-import React from 'react';
-import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import React, { useEffect } from 'react';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../../shared/Loading';
-import SocialLogin from './SocialLogin';
+
+
 
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
-    const [user1]=useAuthState(auth);
+    const [signInWithEmailAndPassword, userEP, loading, error] = useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle, userGL, loading1, error1] = useSignInWithGoogle(auth);
+    const [token] = useToken(userEP || userGL);
+          
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    if (user || user1) {
-
-        navigate(from, { replace: true })
-      }
+    useEffect( () =>{
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, from, navigate])
 
     const onSubmit = data => {
         const email = data?.email;
         const password = data?.password;
         signInWithEmailAndPassword(email, password);
     };
+    const handleGoogleLogin=async()=>{
+        await signInWithGoogle();
+      }
 
     return (
         <div className="min-h-screen flex justify-center items-center">
@@ -93,7 +101,13 @@ const Login = () => {
                     </div>
                 </form>
                 <div className='lg:w-1/4 w-full mx-auto'>
-                    <SocialLogin></SocialLogin>
+                    {loading1 && <Loading></Loading>}
+                    {error1 &&  <p className='text-red'> {error1?.message}</p>}
+                    <div>
+                <div className="divider">OR</div>
+            <button className="border-2 border-black bg-white py-2 hover:bg-b hover:bg-black hover:text-white  w-full mb-3  font-bold rounded"
+                type="submit" onClick={handleGoogleLogin}><i className="fa fa-google text-green-700" aria-hidden="true"></i> Sign in with google</button>
+        </div>
                 </div>
             </div>
         </div>

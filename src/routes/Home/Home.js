@@ -1,6 +1,4 @@
 
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
 import useCarousels from '../../hooks/useCarousels';
 import Reviews from './Reviews';
 import Tools from './Tools';

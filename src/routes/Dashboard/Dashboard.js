@@ -16,7 +16,7 @@ const Dashboard = () => {
             .then(data => setUserRole(data))
 
 
-    },[])
+    }, [])
 
     if (loading) {
         return <Loading />
@@ -43,11 +43,12 @@ const Dashboard = () => {
                                 <li className='bg-black'><CustomLink className="p-3" to="/dashboard/manageProduct">Manage Product</CustomLink></li>
                             </> :
                             <>
-                                <li className='bg-black' ><CustomLink className="p-3" to="/dashboard">My Orders</CustomLink></li>
                                 <li className='bg-black'><CustomLink className="p-3" to="/dashboard/addingReview">Adding Review</CustomLink></li>
+                                <li className='bg-black' ><CustomLink className="p-3" to="/dashboard/myOrder">My Orders</CustomLink></li>
                             </>
 
                     }
+                    
                     <li className='bg-black'><CustomLink className="p-3" to="/dashboard/profile">My Profile</CustomLink></li>
                 </ul>
             </div>

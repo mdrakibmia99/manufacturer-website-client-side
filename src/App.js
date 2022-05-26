@@ -7,6 +7,7 @@ import MakeAdmin from './routes/Dashboard/Admin/MakeAdmin';
 import ManageOrders from './routes/Dashboard/Admin/ManageOrders';
 import ManageProducts from './routes/Dashboard/Admin/ManageProducts';
 import Dashboard from './routes/Dashboard/Dashboard';
+import DashboardIndex from './routes/Dashboard/DashboardIndex';
 import AddingReview from './routes/Dashboard/User/AddingReview';
 import MyOrders from './routes/Dashboard/User/MyOrders';
 import MyProfile from './routes/Dashboard/User/MyProfile';
@@ -17,6 +18,7 @@ import Login from './routes/Login/Login';
 import Register from './routes/Login/Register';
 import Reset from './routes/Login/Reset';
 import PageNotFound from './routes/PageNotFound/PageNotFound';
+import Footer from './shared/Footer/Footer';
 import Navbar from './shared/Navbar';
 import Purchase from './shared/Purchase';
 
@@ -45,7 +47,8 @@ function App() {
           </RequireAuth>
           }>
           {/* user segment */}
-          <Route index element={<MyOrders />} />
+          <Route index element={<DashboardIndex></DashboardIndex>}></Route>
+          <Route path="myOrder" element={<MyOrders />} />
           <Route path='addingReview' element={<AddingReview />} />
 
           {/* admin segment */}
@@ -60,6 +63,7 @@ function App() {
 
       </Routes>
       <ToastContainer />
+      <Footer></Footer>
     </div>
   );
 }

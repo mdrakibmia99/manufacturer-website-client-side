@@ -21,9 +21,9 @@ const AddProduct = () => {
                 body: formData
             });
             const response = await request.json();
-            console.log(response);
             if (response?.success) {
                 const productInfo = {
+        
                     toolName: data?.product,
                     toolImage: response?.data?.url,
                     toolDescription: data?.desc,
